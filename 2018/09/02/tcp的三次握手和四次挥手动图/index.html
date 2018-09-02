@@ -92,7 +92,7 @@
 <meta property="og:image" content="http://img.blog.csdn.net/20170606084851272?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXpjc3U=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="https://img-blog.csdn.net/20180808224648257?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F6Y3N1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/20180808224632856?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F6Y3N1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:updated_time" content="2018-09-02T09:58:33.129Z">
+<meta property="og:updated_time" content="2018-09-02T10:01:22.627Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tcp的三次握手和四次挥手动图">
 <meta name="twitter:description" content="背景描述 通过上一篇中网络模型中的IP层的介绍，我们知道网络层，可以实现两个主机之间的通信。但是这并不具体，因为，真正进行通信的实体是在主机中的进程，是一个主机中的一个进程与另外一个主机中的一个进程在交换数据。IP协议虽然能把数据报文送到目的主机，但是并没有交付给主机的具体应用进程。而端到端的通信才应该是应用进程之间的通信。 UDP，在传送数据前不需要先建立连接，远地的主机在收到UDP报文后也不需">
@@ -311,7 +311,45 @@
 <p>UDP，在传送数据前不需要先建立连接，远地的主机在收到UDP报文后也不需要给出任何确认。虽然UDP不提供可靠交付，但是正是因为这样，省去和很多的开销，使得它的速度比较快，比如一些对实时性要求较高的服务，就常常使用的是UDP。对应的应用层的协议主要有 DNS,TFTP,DHCP,SNMP,NFS 等。</p>
 <p>TCP，提供面向连接的服务，在传送数据之前必须先建立连接，数据传送完成后要释放连接。因此TCP是一种可靠的的运输服务，但是正因为这样，不可避免的增加了许多的开销，比如确认，流量控制等。对应的应用层的协议主要有 SMTP,TELNET,HTTP,FTP 等。</p>
 </blockquote>
-<p>###常用的熟知端口号 ###<br>| 应用程序 | FTP | TFTP | TELNET | SMTP | DNS |  HTTP | SSH | MYSQL |<br>|:————-|:————-:|:————-:|:————-:|:————-:|:————-:|:————-:|:————-:|:————-:|<br>| 熟知端口 | 21,20 | 69 | 23 | 25 | 53 | 80 | 22 | 3306 |<br>| 传输层协议 | TCP | UDP | TCP | TCP | UDP | TCP |  |  |</p>
+<p>###常用的熟知端口号 ###</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">应用程序</th>
+<th style="text-align:center">FTP</th>
+<th style="text-align:center">TFTP</th>
+<th style="text-align:center">TELNET</th>
+<th style="text-align:center">SMTP</th>
+<th style="text-align:center">DNS</th>
+<th style="text-align:center">HTTP</th>
+<th style="text-align:center">SSH</th>
+<th style="text-align:center">MYSQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">熟知端口</td>
+<td style="text-align:center">21,20</td>
+<td style="text-align:center">69</td>
+<td style="text-align:center">23</td>
+<td style="text-align:center">25</td>
+<td style="text-align:center">53</td>
+<td style="text-align:center">80</td>
+<td style="text-align:center">22</td>
+<td style="text-align:center">3306</td>
+</tr>
+<tr>
+<td style="text-align:left">传输层协议</td>
+<td style="text-align:center">TCP</td>
+<td style="text-align:center">UDP</td>
+<td style="text-align:center">TCP</td>
+<td style="text-align:center">TCP</td>
+<td style="text-align:center">UDP</td>
+<td style="text-align:center">TCP</td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
 <hr>
 <h2 id="TCP的概述"><a href="#TCP的概述" class="headerlink" title="TCP的概述"></a>TCP的概述</h2><blockquote>
 <p>TCP把连接作为最基本的对象，每一条TCP连接都有两个端点，这种断点我们叫作套接字（socket），它的定义为端口号拼接到IP地址即构成了套接字，例如，若IP地址为192.3.4.16 而端口号为80，那么得到的套接字为192.3.4.16:80。</p>
